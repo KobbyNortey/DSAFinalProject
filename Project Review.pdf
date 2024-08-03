@@ -1,0 +1,132 @@
+
+ 
+ 
+DATA STRUCTURES AND ALGORITHMS FINAL PROJECT  GROUP 24
+Doron Pela 
+Shawn Owusu-Nortey
+Heidi Hat
+Papa Yaw Badu 
+CS222: Data Structures and Algorithms
+Dr. Govindha Yeluripati
+August 3, 2024.
+
+
+
+
+Project Review
+Interactive Restaurant Reservation System is designed to facilitate the management of table bookings at a restaurant. It allows customers to make reservations, check availability, cancel bookings, and view reservation details. This system is aimed at customers or clients who need an efficient way to handle reservations and ensure optimal use of seating capacity. 
+
+This system has three main functions which fall under three respective classes; ‘Reservation’, ‘Reservation Manager’, and ‘Restaurant Reservation CLI’. Reservation which gets the details of the reservation. Reservation Manager which allows customers to book tables, cancel reservations, view existing bookings,  a table availability check, which provides functionality to check the availability of tables for a specific date and time;  and reservation summaries to generate summaries of reservations for a specified date or date range, providing an overview of bookings. Restaurant Reservation CLI is the interface the user or customer interacts with to access all the functionalities of the system.
+
+Objectives
+The primary objectives of the Restaurant Reservation System are to offer a seamless experience for both customers and restaurant staff in handling reservations and making the processes faster and easier. Another primary objective is to provide a straightforward and intuitive command-line interface that simplifies the process of interacting with the reservation system. One more primary objective is to enable users to check the availability of tables in real-time, ensuring accurate information for booking decisions. Finally, another objective is to implement a system that operates entirely in memory, allowing for quick access to data and efficient handling of reservations without the need for persistent storage.
+
+This reservation system is designed to meet the needs of various users effectively. For restaurant employees, it simplifies managing table bookings and cancellations, ensuring optimal seating arrangements with minimal effort. For customers, it provides an easy and reliable way to check availability and make reservations. Finally, for restaurants lacking complex technical infrastructure, the system offers a lightweight solution that’s easy to implement and manage, helping them handle reservations without needing advanced technology.
+
+Design and Implementation
+The system is designed using principles discussed and taught in our Data Structures and Algorithms and suitable data structures based on efficiency. It consists of the following main classes: 
+
+The ‘MyArrayList’ class which is an implementation of a dynamic array supporting basic list operations. It provides methods to add, remove, and retrieve elements. 
+The ‘MyHashMap’ class which is a custom hashmap implementation for storing reservations by date and time (it uses chaining for collision resolution).
+The ‘Reservation’ Class represents a reservation with details such as ID, customer name, date, time, and number of people. It includes methods to get reservation details and a string representation. 
+The ‘ReservationManger’ Class which manages the core functionality of the reservation system, including booking, cancelling, viewing, and summarising reservations.
+The RestaurantReservationCLI Class which provides a command-line interface (CLI) for users to interact with the reservation system.
+
+Code Structure
+For the ‘MyArrayList’ Class, we decided to make that class generic which implements a dynamic array list. It consists of 5 key methods;
+add(T element) method which adds an element to the list.
+ remove(T element) method which removes an element from the list.
+get(int index)method which retrieves an element at a specified index. 
+size() method which returns the number of elements in the list.
+ toArray() method which converts the list to an array.
+
+For the ‘MyHashMap’ Class, we made it store key-value pairs and so it was in the form ‘MyHashMap<K, V>. It consists of 4 key methods;
+put(K key, V value) method which adds or updates a key-value pair. 
+get(K key) method which retrieves the value associated with a key. 
+remove(K key) method which removes a key-value pair.
+ keySet() method which returns a list of all keys.
+
+For the ‘Reservation’ Class, there were 6 key Methods;
+getReservationId() which  returns the reservation ID.
+getCustomerName() which Returns the customer name.
+getDate() which Returns the reservation date. 
+getTime() which Returns the reservation time. 
+getNumPeople() which Returns the number of people.
+toString() which  Provides a string representation of the reservation. 
+
+For the ‘ReservationManager’ Class, there were 5 Key Methods;
+bookTable() method which is used to book a table for the specified details i.e. Customer name, the date and time for reservation and the number of people that will use the table.
+cancelReservation() method that is used to Cancel a reservation based on the r reservation ID.
+ viewReservations() for  Viewing reservations filtered by date or customer name. 
+CheckAvailability() method that checks available seats for a given date and time. 
+generateSummary() method that generates a summary of reservations within a date range. 
+
+For the ‘RestaurantReservationCLI’, we had 6 Key Methods;
+The main() method to run the CLI application.
+bookTable Handles table booking input from the user using Scanner. 
+cancelReservation() method that handles reservation cancellation input from the user. 
+viewReservations() method that handles viewing of reservations input from the user. 
+checkAvailability() method that handles checking of table availability input from the user.
+generateSummary() method that handles generating reservation summaries input from the user.
+
+Data Structures and Algorithms
+ArrayList used in ‘MyArrayList’ for dynamic storage.
+Hashmap was used in ‘MyHashMap’ to provide efficient key-value pair storage and retrieval.
+Linked List was used in ‘MyHashMap’ for handling collisions.
+Hashing was also used in ‘MyHashMap’ to determine the index for storing key-value pairs.
+Dynamic Resizing was used in ‘MyArrayList’ to dynamically resize the array when needed.
+
+Performance
+In the ‘MyArrayList’ Class;
+The add() method will have O(1) amortised, due to resizing.
+The remove() method will have an O(n) in the worst case. 
+The get()method will have an O(1).
+
+In the ‘MyHashTable’ Class;
+The Put() method will have an O(1) average case and O(n) worst case due to collisions.
+The  Get() method will have  O(1) average case, and O(n) worst case. 
+The Remove() method will have  O(1) average case, O(n) worst case
+
+In the ‘Reservation Management’ Class;
+Booking: O(n) in the worst case due to iteration over reservations. 
+Cancellation: O(n) due to search.
+Availability Check: O(n) due to iteration.
+
+Optimisation Techniques;
+Dynamic Resizing to reduce the need for frequent resizing in the 'MyArrayList' Class.
+And Separate Chaining to handle collisions in  the 'MyHashMap' Class.
+
+Challenges Faced and Solutions Implemented
+Challenge: Managing collisions in the hash map.
+Solution: Implemented separate chaining with linked lists.
+Challenge: Ensuring the dynamic resizing of the array list.
+Solution: Implemented automatic resizing when the capacity is reached.
+Instructions
+To start the Restaurant Reservation System, run the RestaurantReservationCLI class. You will be presented with a menu of options. Below are the options that will provided once the class is ran;
+
+            "Restaurant Reservation System"
+            "1. Book Table"
+            "2. Cancel Reservation"
+            "3. View Reservations"
+            "4. Check Availability"
+            "5. Generate Summary"
+            "6. Exit"
+            "Select an option: "
+
+To book a table, select option ‘1’. Enter the customer's name, date (yyyy-mm-dd), time (HH:mm), and the number of people.
+
+To cancel a reservation, select option ‘2’. Enter the reservation ID, a message will pop up to confirm cancellation. 
+
+To view reservations made, select option ‘3’. Enter a filter (date or customer name). View the list of reservations matching the filter.
+
+To check available seating, select option ‘4’. Enter the date and then the time, the available seating capacity is displayed. 
+
+To generate the summary, select option ‘5’. Enter the start date and then the end date. The summary of reservations between the dates given is shown. 
+
+For any option given or selected, when done with that menu option. The menu gets displayed again and at any time option ‘6’ can be selected which is for exiting the system.
+
+Demo
+
+
+
+ 
